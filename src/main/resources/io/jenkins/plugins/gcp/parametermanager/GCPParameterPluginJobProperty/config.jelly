@@ -1,0 +1,20 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+  <f:entry field="useGCPParameter">
+    <f:optionalBlock name="optionalGCPParameterBlock" title="Use GCP Parameter" checked="${it.isUseGCPParameter()}">
+      <f:entry title="Parameter Name" field="gcpParameterName">
+        <f:textbox name="gcpParameterName" value="${it.gcpParameterName}"/>
+      </f:entry>
+      <f:entry title="Parameter Version" field="gcpParameterVersion">
+        <f:textbox name="gcpParameterVersion" value="${it.gcpParameterVersion}"/>
+      </f:entry>
+      <f:entry title="Parameter Location" field="location">
+        <f:textbox />
+      </f:entry>
+      <f:entry title="Parameter value injection method" field="createCredential">
+        <f:radio name="createCredential" value="true" title="Create Credential for storing parameter value" checked="${instance.createCredential == 'true' || instance.createCredential == null}"/>
+        <f:radio name="createCredential" value="false" title="Inject parameter value in pipeline global variable 'GCPParameter'" checked="${instance.createCredential == 'false'}"/>
+      </f:entry>
+    </f:optionalBlock>
+  </f:entry>
+</j:jelly>

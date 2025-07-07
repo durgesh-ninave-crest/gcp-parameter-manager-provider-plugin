@@ -1,0 +1,35 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <l:layout title="GCP Parameter Plugin">
+    <l:header />
+    <l:main-panel>
+      <h1>GCP Parameter Plugin</h1>
+      <p><b>Project ID:</b> ${it.getProjectId()}</p>
+      <p><b>GCP Secret credential ID:</b> ${it.getGcpCredentialName()}</p>
+      <h2>Fetched Parameters</h2>
+      <j:choose>
+        <j:when test="${it.getParameterNames().isEmpty()}">
+          <p>No parameters fetched yet.</p>
+        </j:when>
+        <j:otherwise>
+          <table class="jenkins-table">
+            <tr>
+              <th>Parameter Name</th>
+              <th>Parameter Version</th>
+              <th>Location</th>
+              <th>Format</th>
+            </tr>
+            <j:forEach var="param" items="${it.getParameterNames()}">
+              <tr>
+                <td align="center" style="padding-left:10px; padding-right:10px;">${param.get("parameter")}</td>
+                <td align="center" style="padding-left:10px; padding-right:10px;">${param.get("version").substring(param.get("version").lastIndexOf('/') + 1)}</td>
+                <td align="center" style="padding-left:10px; padding-right:10px;">${param.get("location")}</td>
+                <td align="center" style="padding-left:10px; padding-right:10px;">${param.get("format")}</td>
+              </tr>
+            </j:forEach>
+          </table>
+        </j:otherwise>
+      </j:choose>
+    </l:main-panel>
+  </l:layout>
+</j:jelly>

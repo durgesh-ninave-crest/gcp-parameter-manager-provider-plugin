@@ -1,0 +1,14 @@
+<jenkins>
+    <globalPlugins>
+        <plugin>
+            <name>GCP Parameter Plugin</name>
+            <version>1.0.0</version>
+            <description>Plugin for managing GCP parameters</description>
+        </plugin>
+    </globalPlugins>
+
+    <!-- Register the Global Configuration -->
+    <extensionPoints>
+        <globalConfiguration class="io.jenkins.plugins.gcpparameterprovider.GCPParameterPluginGlobalConfiguration" />
+    </extensionPoints>
+</jenkins>
