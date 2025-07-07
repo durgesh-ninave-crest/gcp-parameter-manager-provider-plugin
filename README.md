@@ -1,0 +1,1 @@
+# gcp-parameter-manager-credential-provider-plugin
